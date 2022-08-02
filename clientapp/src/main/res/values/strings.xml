@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ClientApp</string>
+    <string name="btn_get">Get</string>
+</resources>
