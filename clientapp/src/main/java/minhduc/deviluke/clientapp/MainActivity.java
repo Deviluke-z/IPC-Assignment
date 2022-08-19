@@ -20,15 +20,14 @@ public class MainActivity extends AppCompatActivity {
 
   private AIDLRemoteService aidlRemoteService;
   private TextView tvGetProduct;
-  private Button btnGet;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    btnGet = findViewById(R.id.btnGet);
-    tvGetProduct = findViewById(R.id.tvGetProduct);
+    Button btnGet = findViewById(R.id.btnGet);
+    tvGetProduct = findViewById(R.id.tvStore);
 
     btnGet.setOnClickListener(v -> {
       try {
@@ -43,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
   private CallBack callBack = new CallBack.Stub() {
     @Override
     public void finish(String string) {
+      runOnUiThread(() -> tvGetProduct.setText(string));
+
+    }
+
+    @Override
+    public void waiting(String string) {
       runOnUiThread(() -> tvGetProduct.setText(string));
     }
   };
@@ -73,11 +78,7 @@ public class MainActivity extends AppCompatActivity {
     String packageName = "com.example.baseproject";
     String serviceName = packageName + ".RemoteService";
 
-    Intent intent = new Intent();
-    intent.setComponent(new ComponentName(packageName, serviceName));
-    intent.putExtra("message", "new product");
     try {
-      startService(intent);
       Intent mIntent = new Intent();
       mIntent.setPackage(packageName);
       mIntent.setClassName(packageName, serviceName);

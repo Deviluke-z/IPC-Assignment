@@ -14,10 +14,12 @@
         android:text="@string/btn_get" />
 
     <TextView
-        android:id="@+id/tvGetProduct"
+        android:id="@+id/tvStore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textSize="24sp"
         tools:text="Test" />
 
 </LinearLayout>

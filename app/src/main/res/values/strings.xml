@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BaseProject</string>
+    <string name="tv_sample">Server App. Switch to client app to request.</string>
 </resources>
